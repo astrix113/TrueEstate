@@ -1,7 +1,8 @@
 import React from "react";
 import { FaSyncAlt } from "react-icons/fa";
 
-const FilterBar = ({ filterOptions, onFilterChange, onSort }) => {
+// Add a default empty object {} for filterOptions
+const FilterBar = ({ filterOptions = {}, onFilterChange, onSort }) => {
   const FilterSelect = ({ label, options, fieldKey }) => (
     <div className="relative">
       <select

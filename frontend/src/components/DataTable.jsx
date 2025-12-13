@@ -2,7 +2,7 @@ import React from "react";
 import { FaRegCopy, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Loader from "./Loader"; // Import the new Loader
 
-const DataTable = ({ data, loading, meta, onPageChange }) => {
+const DataTable = ({ data = [], loading, meta, onPageChange }) => {
   const headers = [
     "Transaction ID",
     "Date",
@@ -45,7 +45,7 @@ const DataTable = ({ data, loading, meta, onPageChange }) => {
           </thead>
           <tbody className="bg-white divide-y divide-gray-100">
             {/* Empty State (Only show if NOT loading and NO data) */}
-            {!loading && data.length === 0 ? (
+            {!loading && data?.length === 0 ? (
               <tr>
                 <td colSpan="13" className="p-10 text-center text-gray-500">
                   No records found.
@@ -118,7 +118,7 @@ const DataTable = ({ data, loading, meta, onPageChange }) => {
             <FaChevronLeft className="h-4 w-4" />
           </button>
 
-          {[...Array(Math.min(5, meta.totalPages))].map((_, i) => {
+          {[...Array(Math.min(5, meta?.totalPages || 1))].map((_, i) => {
             const pageNum = i + 1;
             return (
               <button
